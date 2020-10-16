@@ -1,0 +1,54 @@
+<template>
+  <div class="slds-p-right--small slds-p-left--small">
+    <div
+      class="slds-card slds-card_boundary slds-has-bottom-magnet slds-has-top-magnet"
+    >
+      <div class="slds-grid slds-wrap">
+        <div class="slds-size_1-of-1">
+          <div class="slds-grid slds-wrap">
+            <div class="slds-size_3-of-12 slds-border_right slds-align_absolute-center">
+              <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-1 slds-align_absolute-center">
+                  <p>
+                    <lightning-formatted-date-time
+                      value={scheduleItem.StartDateTime}
+                      weekday="short"
+                    >
+                    </lightning-formatted-date-time>
+                  </p>
+                </div>
+                <div class="slds-size_1-of-1 slds-align_absolute-center">
+                  <p class="slds-text-heading--medium">
+                    <lightning-formatted-date-time
+                      value={scheduleItem.StartDateTime}
+                      day="2-digit"
+                    >
+                    </lightning-formatted-date-time>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="slds-size_9-of-12 slds-p-around_small">
+              <p>
+                <lightning-formatted-date-time
+                  value={scheduleItem.StartDateTime}
+                  hour="2-digit"
+                  minute="2-digit"
+                ></lightning-formatted-date-time>
+                -
+
+                <lightning-formatted-date-time
+                  value={scheduleItem.EndDateTime}
+                  hour="2-digit"
+                  minute="2-digit"
+                ></lightning-formatted-date-time>
+              </p>
+              <p>{scheduleItem.Subject}</p>
+              <p>{scheduleItem.Location}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

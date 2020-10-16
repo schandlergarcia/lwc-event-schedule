@@ -1,0 +1,69 @@
+<template>
+  <lightning-card title="Schedule" icon-name="custom:custom81">
+    <div class="slsd-grid slds-wrap">
+      <div class="slds-size--1-of-1 slds-p-right--small slds-p-left--small">
+        <div class="slds-grid slds-wrap slds-grid--align-spread">
+          <div class="slds-col slds-align-middle">
+            <lightning-button-icon
+              icon-name="utility:chevronleft"
+              alternative-text="Previous"
+              onclick={handlePrevious}
+            >
+            </lightning-button-icon>
+          </div>
+          <div class="slds-col">
+            <div class="slds-grid slds-wrap">
+              <div class="slds-size--1-of-1">
+                <h2 class="slds-text-align--center slds-text-heading--medium">
+                  {selectedMonth}
+                </h2>
+              </div>
+              <div class="slds-size--1-of-1">
+                <h2 class="slds-text-align--center slds-text-heading--medium">
+                  {selectedYear}
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div class="slds-col slds-align-middle">
+            <lightning-button-icon
+              alternative-text="Next"
+              icon-name="utility:chevronright"
+              onclick={handleNext}
+              disabled={nextButton}
+            >
+            </lightning-button-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slds-p-top_small">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-1">
+                <template if:true={foundData}>
+                    <template for:each={selectedScheduleData} for:item="item">
+                      <c-schedule-item
+                        key={item.Id}
+                        record-id={recordId}
+                        schedule-item={item}
+                      >
+                      </c-schedule-item>
+                    </template>
+                  </template>
+                  <template if:false={foundData}>
+                    <div class="slds-p-right_small slds-p-left_small">                    
+                        <c-lwc-messaging-utility show-message=true message-type="illustration" message-title="No Events Found" illustration-name="desert"></c-lwc-messaging-utility>                    
+                    </div>
+                  </template>        
+            </div>
+        </div>
+    </div>
+    <div slot="footer">
+      <lightning-button
+        variant="base"
+        label="View All"
+        onclick={viewAll}
+      ></lightning-button>
+    </div>
+  </lightning-card>
+</template>
